@@ -12,3 +12,6 @@ Harlowe 3.1.0
 - Item pick ups (keys)
 - Locked passages needing keys
 - Startup, Footer passages
+
+### Tutorials
+[Simple Inventory in Twine2](https://gersande.com/blog/designing-inventories-in-twine-2-with-the-built-in-harlowe-macros/#1)
