@@ -15,3 +15,4 @@ Harlowe 3.1.0
 
 ### Tutorials
 [Simple Inventory in Twine2](https://gersande.com/blog/designing-inventories-in-twine-2-with-the-built-in-harlowe-macros/#1)
+[Locked doors](https://www.youtube.com/watch?v=C_Mmv6vQajM)
