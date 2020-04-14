@@ -27,6 +27,8 @@ For a list of all formats Tweego has access to: `go run github.com/tmedwards/twe
 
 Less perferable, but if you'd like a graphical view of the story structure the compiled `.html` file can be edited using the online Twine 2 Editor.
 
+**NOTE**: This will only work for games built in a single `.twee` file.
+
 * Open the Editor at https://twinery.org/2
 * `Import from File` and select the compiled `<story>.html` file.
 * Make any edits / rearrange stories
