@@ -1,6 +1,8 @@
 # Twine Games
 Set of simple browser games built in Twine
 
+Play them [online](https://brisberg.github.io/twine-games/dist)!
+
 ## Install
 
 Install [golang](https://golang.org/doc/install) for your system.
