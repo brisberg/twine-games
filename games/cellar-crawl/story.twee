@@ -35,7 +35,7 @@ You stand in a musky Storeroom. The walls are lined with casks and barrels fille
 (else:)[The broken wall reveals a [[dark passage->Tunnel1]]]
 (click: "bricks")[\
   (if: $inv contains "hammer")[\
-    You savagely destroy the wall with your hammer, revealing a [[dark passage->Tunnel1-dark]]\
+    The brick wall crumbles under your hammer, revealing a [[dark passage->Tunnel1-dark]]\
   ]
   (else:)[\
     The brick wall sounds hollow, but you cannot budge it with your bare hands.
@@ -62,7 +62,7 @@ You crouch in a dark tunnel, unable to see your hand infront of your face.
 :: Tunnel1
 You lantern burns brightly.
 
-The rock walls appears smooth, as if dug by the pressure of water. The tunnel makes a turn upahead out of sight.
+The rock walls appears smooth, as if dug by the flowing water pressure. The tunnel makes a turn upahead out of sight.
 
 [[Follow it.->Tunnel2]]
 [[Turn back->Storeroom]]
