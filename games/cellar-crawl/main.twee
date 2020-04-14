@@ -1,0 +1,28 @@
+:: StoryTitle
+cellar-crawl
+
+
+:: StoryData
+{
+	"ifid": "F546AE48-0F22-44DB-8A69-D78C7F6897D5",
+	"format": "Harlowe",
+	"format-version": "3.1.0",
+	"start": "Entrance",
+	"zoom": 1
+}
+
+:: Starup [startup] {"position":"25,0","size":"100,100"}
+<!-- Set up Initial Variables -->
+(set: $inv to (a: "lantern", "rusty key"))
+(set: $door_locked to true)
+(set: $storeroom_hammer to true)
+
+
+:: Footer [footer] {"position":"125,0","size":"100,100"}
+<!-- Print the Inventory -->
+(if: $inv's length > 0)[
+  (if: (passage:)'s tags contains "noInvDisplay")[]\
+  (else:)[You are carrying (print: $inv.join(", "))]
+  (if: (passage:)'s tags contains "noInvLink")[]\
+  (else:)[Check [[inventory->Inventory]]]
+]
