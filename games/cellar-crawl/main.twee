@@ -12,12 +12,12 @@ cellar-crawl
 }
 
 :: Starup [startup] {"position":"25,0","size":"100,100"}
-<!-- Set up Initial Variables -->
-(set: $inv to (a: "lantern", "rusty key"))
-(set: $door_locked to true)
-(set: $storeroom_hammer to true)
-(set: $wall_intact to true)
-(set: $heartstone to true)
+<!-- Set up Initial Variables -->\
+(set: $inv to (a: "lantern", "rusty key"))\
+(set: $door_locked to true)\
+(set: $storeroom_hammer to true)\
+(set: $wall_intact to true)\
+(set: $heartstone to true)\
 (set: $lantern_lit to false)
 
 

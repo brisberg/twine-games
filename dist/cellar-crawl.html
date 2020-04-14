@@ -17,12 +17,12 @@
 (click: &quot;lantern&quot;)[(display: &quot;lantern-item&quot;)]
 (click: &quot;rusty key&quot;)[(display: &quot;rusty-key-item&quot;)]
 
-(link-goto: &quot;Return&quot;, (history:)&#39;s last)</tw-passagedata><tw-passagedata pid="2" name="rusty-key-item" tags="item" position="700,0" size="100,100">An old, rusted iron key.</tw-passagedata><tw-passagedata pid="3" name="lantern-item" tags="item" position="600,0" size="100,100">A copper, hooded lantern with a small oil burner which easily illuminates a room. It appears to have plenty of oil.</tw-passagedata><tw-passagedata pid="4" name="Starup" tags="startup" position="25,0" size="100,100">&lt;!-- Set up Initial Variables --&gt;
-(set: $inv to (a: &quot;lantern&quot;, &quot;rusty key&quot;))
-(set: $door_locked to true)
-(set: $storeroom_hammer to true)
-(set: $wall_intact to true)
-(set: $heartstone to true)
+(link-goto: &quot;Return&quot;, (history:)&#39;s last)</tw-passagedata><tw-passagedata pid="2" name="rusty-key-item" tags="item" position="700,0" size="100,100">An old, rusted iron key.</tw-passagedata><tw-passagedata pid="3" name="lantern-item" tags="item" position="600,0" size="100,100">A copper, hooded lantern with a small oil burner which easily illuminates a room. It appears to have plenty of oil.</tw-passagedata><tw-passagedata pid="4" name="Starup" tags="startup" position="25,0" size="100,100">&lt;!-- Set up Initial Variables --&gt;\
+(set: $inv to (a: &quot;lantern&quot;, &quot;rusty key&quot;))\
+(set: $door_locked to true)\
+(set: $storeroom_hammer to true)\
+(set: $wall_intact to true)\
+(set: $heartstone to true)\
 (set: $lantern_lit to false)</tw-passagedata><tw-passagedata pid="5" name="Footer" tags="footer" position="125,0" size="100,100">&lt;!-- Print the Inventory --&gt;
 (if: $inv&#39;s length &gt; 0)[
   (if: (passage:)&#39;s tags contains &quot;noInvDisplay&quot;)[]\
