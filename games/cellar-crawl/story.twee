@@ -8,18 +8,7 @@ There is a [door]<door| with a small, iron lock.
 (click: ?door)[(display: "door")]
 ]\
 (else:)[There is an unlocked [[door->Storeroom]].]
-
-
-:: Storeroom {"position":"150,125","size":"100,100"}
-You stand in a musky Storeroom. The walls are lined with casks and barrels filled with long forgotten wine.
-
-(if: $storeroom_hammer is true)[There is a hammer resting on the table.]<hammer|
-(click-replace: ?hammer)[You take the hammer.\
-  (set: $inv to $inv + (a: "hammer"))\
-  (set: $storeroom_hammer to false)\
-]
-
-There is a [[door->Entrance]] back to the entrance.
+(if: $inv contains "heartstone")[[[Escape->Escape]] with the Heartstone!]
 
 
 :: door [noInvLink noInvDisplay] {"position":"25,250","size":"100,100"}
@@ -31,3 +20,92 @@ There is a [[door->Entrance]] back to the entrance.
   ]\
   (else:)[The door is locked and requires a key]
 ]
+
+
+:: Storeroom {"position":"150,125","size":"100,100"}
+You stand in a musky Storeroom. The walls are lined with casks and barrels filled with long forgotten wine.
+
+(if: $storeroom_hammer is true)[There is a hammer resting on the table.]<hammer|
+(click-replace: ?hammer)[You take the hammer.\
+  (set: $inv to $inv + (a: "hammer"))\
+  (set: $storeroom_hammer to false)\
+]
+
+(if: $wall_intact is true)[Some of the bricks in the wall look loose.]
+(else:)[The broken wall reveals a [[dark passage->Tunnel1]]]
+(click: "bricks")[\
+  (if: $inv contains "hammer")[\
+    You savagely destroy the wall with your hammer, revealing a [[dark passage->Tunnel1-dark]]\
+  ]
+  (else:)[\
+    The brick wall sounds hollow, but you cannot budge it with your bare hands.
+  ]
+]
+
+There is a [[door->Entrance]] back to the entrance.
+
+
+:: Tunnel1-dark
+(if: $lantern_lit is true)[(goto: "Tunnel1")]
+You crouch in a dark tunnel, unable to see your hand infront of your face.
+
+(if: $inv contains "lantern")[\
+  Light your [lantern]<lantern|.
+  (click: ?lantern)[\
+    (set: $lantern_lit to true)\
+    (goto: "Tunnel1")
+  ]
+]
+[[Turn back->Storeroom]]
+
+
+:: Tunnel1
+You lantern burns brightly.
+
+The rock walls appears smooth, as if dug by the pressure of water. The tunnel makes a turn upahead out of sight.
+
+[[Follow it.->Tunnel2]]
+[[Turn back->Storeroom]]
+
+
+:: Tunnel2
+It takes some time to crawl through the narrow tunnel, but you make steady progress. Your lantern sputters but remains strong.
+There is a faint, but deep throbbing sound coming from up ahead.
+
+[[Continue.->Tunnel3]]
+[[Turn back->Tunnel1]]
+
+:: Tunnel3
+At last the tunnel widens enough for you to nearly stand. You come upon a stone ediface with a worn wooden door with a dull red light leaking under it.
+
+(click: "wooden door")[On closer inspection the door has many thin spindle patterns inlayed in the wood. It once had a \
+laquor finish and a golden handle, but has since decayed from misuse]
+
+The throbbing sound comes from all around you, permeating your thoughts.
+
+[[Open the door.->Heartroom]]
+[[Turn back->Tunnel2]]
+
+:: Heartroom
+Behind the door is a small antechamber with rough hewen stone covering the walls and floor. In each corner is a \
+sconce with a luminous crystal casting red light across the floor.
+
+In the center is a stone pedestal with a fist-sized blood red gem. Its sparkles seem to shift and reverberate with the sound.
+
+The sound is deafening.
+
+(if: $heartstone is true)[\
+  [Take the Heartstone]<heartstone|
+  (click-replace: ?heartstone)[\
+    The gem feels heavy, and warm in your hand. It seems to jostle and shake on its own accord.
+
+    Suddenly, the pulse quickens. Slamming your mind with incessant pressure. You must leave!
+    (set: $inv to $inv + (a: "heartstone"))\
+    (set: $heartstone to false)\
+  ]\
+]\
+
+[[Flee->Tunnel3]]
+
+:: Escape [noInvDisplay noInvLink]
+You Win!
