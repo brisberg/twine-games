@@ -73,17 +73,18 @@ The air smells stale and dusty like it hasen&#39;t been moved in years.
   (set: $storeroom_hammer to false)\
 ]
 
-(if: $wall_intact is true)[Some of the bricks in the wall look loose.]
-(else:)[The broken wall reveals a [[dark passage-&gt;Tunnel1]]]
-(click: &quot;bricks&quot;)[\
+(if: $wall_intact is true)[Some of the (link-repeat: &quot;bricks&quot;)[\
   (if: $inv contains &quot;hammer&quot;)[\
-    The brick wall crumbles under your hammer, revealing a [[dark passage-&gt;Tunnel1-dark]]\
-    (set: $wall_intact to false)
-  ]
+    (replace: ?wallresult)[*Slam* Bricks fly and crumble under your hammer, revealing a [[dark passage-&gt;Tunnel1-dark]].]\
+    (set: $wall_intact to false)\
+  ]\
   (else:)[\
-    The brick wall sounds hollow, but you cannot budge it with your bare hands.
-  ]
-]
+    (replace: ?wallresult)[The brick wall sounds hollow, but you cannot budge it with your bare hands.]\
+  ]\
+] in the wall look loose.]\
+(else:)[The broken wall reveals a [[dark passage-&gt;Tunnel1]]]\
+
+|wallresult)[]
 
 There is a [[door-&gt;Entrance]] back to the entrance.</tw-passagedata><tw-passagedata pid="12" name="Tunnel1-dark" tags="" position="225,225" size="100,100">(set: $thud_lvl to 1)
 (if: $lantern_lit is true)[(goto: &quot;Tunnel1&quot;)]

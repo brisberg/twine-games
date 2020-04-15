@@ -31,17 +31,18 @@ You stand in a musky Storeroom. The walls are lined with casks and barrels fille
   (set: $storeroom_hammer to false)\
 ]
 
-(if: $wall_intact is true)[Some of the bricks in the wall look loose.]
-(else:)[The broken wall reveals a [[dark passage->Tunnel1]]]
-(click: "bricks")[\
+(if: $wall_intact is true)[Some of the (link-repeat: "bricks")[\
   (if: $inv contains "hammer")[\
-    The brick wall crumbles under your hammer, revealing a [[dark passage->Tunnel1-dark]]\
-    (set: $wall_intact to false)
-  ]
+    (replace: ?wallresult)[*Slam* Bricks fly and crumble under your hammer, revealing a [[dark passage->Tunnel1-dark]].]\
+    (set: $wall_intact to false)\
+  ]\
   (else:)[\
-    The brick wall sounds hollow, but you cannot budge it with your bare hands.
-  ]
-]
+    (replace: ?wallresult)[The brick wall sounds hollow, but you cannot budge it with your bare hands.]\
+  ]\
+] in the wall look loose.]\
+(else:)[The broken wall reveals a [[dark passage->Tunnel1]]]\
+
+|wallresult)[]
 
 There is a [[door->Entrance]] back to the entrance.
 
