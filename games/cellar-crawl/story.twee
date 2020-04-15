@@ -72,7 +72,8 @@ The rock walls appears smooth, as if dug by flowing water pressure. The tunnel m
 (display: "CurrentSoundMsg")
 
 [[Follow it.->Tunnel2]]
-[[Turn back->Storeroom]]
+(if: $heartstone is true)[[[Turn back->Storeroom]]]\
+(else:)[[[Escape->Storeroom]]]
 
 
 :: Tunnel2
@@ -82,7 +83,8 @@ It takes some time to crawl through the narrow tunnel, but you make steady progr
 (display: "CurrentSoundMsg")
 
 [[Continue.->Tunnel3]]
-[[Turn back->Tunnel1]]
+(if: $heartstone is true)[[[Turn back->Tunnel1]]]\
+(else:)[[[Escape->Tunnel1]]]
 
 :: Tunnel3
 (set: $thud_lvl to 3)
@@ -94,7 +96,8 @@ laquor finish and a golden handle, but has since decayed from misuse]
 (display: "CurrentSoundMsg")
 
 [[Open the door.->Heartroom]]
-[[Turn back->Tunnel2]]
+(if: $heartstone is true)[[[Turn back->Tunnel2]]]\
+(else:)[[[Escape->Tunnel2]]]
 
 :: Heartroom
 (set: $thud_lvl to 4)

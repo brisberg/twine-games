@@ -106,13 +106,15 @@ The rock walls appears smooth, as if dug by flowing water pressure. The tunnel m
 (display: &quot;CurrentSoundMsg&quot;)
 
 [[Follow it.-&gt;Tunnel2]]
-[[Turn back-&gt;Storeroom]]</tw-passagedata><tw-passagedata pid="14" name="Tunnel2" tags="" position="475,225" size="100,100">(set: $thud_lvl to 2)
+(if: $heartstone is true)[[[Turn back-&gt;Storeroom]]]\
+(else:)[[[Escape-&gt;Storeroom]]]</tw-passagedata><tw-passagedata pid="14" name="Tunnel2" tags="" position="475,225" size="100,100">(set: $thud_lvl to 2)
 It takes some time to crawl through the narrow tunnel, but you make steady progress. Your lantern sputters but remains strong.
 
 (display: &quot;CurrentSoundMsg&quot;)
 
 [[Continue.-&gt;Tunnel3]]
-[[Turn back-&gt;Tunnel1]]</tw-passagedata><tw-passagedata pid="15" name="Tunnel3" tags="" position="600,225" size="100,100">(set: $thud_lvl to 3)
+(if: $heartstone is true)[[[Turn back-&gt;Tunnel1]]]\
+(else:)[[[Escape-&gt;Tunnel1]]]</tw-passagedata><tw-passagedata pid="15" name="Tunnel3" tags="" position="600,225" size="100,100">(set: $thud_lvl to 3)
 At last the tunnel widens enough for you to nearly stand. You come upon a stone ediface with a worn wooden door with a dull red light leaking under it.
 
 (click: &quot;wooden door&quot;)[On closer inspection the door has many thin spindle patterns inlayed in the wood. It once had a \
@@ -121,7 +123,8 @@ laquor finish and a golden handle, but has since decayed from misuse]
 (display: &quot;CurrentSoundMsg&quot;)
 
 [[Open the door.-&gt;Heartroom]]
-[[Turn back-&gt;Tunnel2]]</tw-passagedata><tw-passagedata pid="16" name="Heartroom" tags="" position="725,225" size="100,100">(set: $thud_lvl to 4)
+(if: $heartstone is true)[[[Turn back-&gt;Tunnel2]]]\
+(else:)[[[Escape-&gt;Tunnel2]]]</tw-passagedata><tw-passagedata pid="16" name="Heartroom" tags="" position="725,225" size="100,100">(set: $thud_lvl to 4)
 Behind the door is a small antechamber with rough hewen stone covering the walls and floor. In each corner is a \
 sconce with a luminous crystal casting red light across the floor.
 
