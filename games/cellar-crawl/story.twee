@@ -105,24 +105,31 @@ laquor finish and a golden handle, but has since decayed from misuse]
 Behind the door is a small antechamber with rough hewen stone covering the walls and floor. In each corner is a \
 sconce with a luminous crystal casting red light across the floor.
 
-In the center is a stone pedestal with a fist-sized blood red gem. Its sparkles seem to shift and reverberate with the sound.
-
-(display: "CurrentSoundMsg")
-
 (if: $heartstone is true)[\
-  [Take the Heartstone]<heartstone|
-  (click-replace: ?heartstone)[\
-    (set: $inv to $inv + (a: "heartstone"))\
-    (set: $heartstone to false)\
+  In the center is a stone pedestal with a fist-sized blood red gem. Its sparkles seem to shift and \
+  reverberate with the sound.
+
+  (display: "CurrentSoundMsg")
+
+  Take the Heartstone\
+]<heartstone|\
+(else:)[\
+  (display: "CurrentSoundMsg")
+]
+[[Flee->Tunnel3]]\
+
+(click: "Take the Heartstone")[\
+  (set: $inv to $inv + (a: "heartstone"))\
+  (set: $heartstone to false)\
+  (replace: ?heartstone)[\
+    ---
     The gem feels heavy, and warm in your hand. It seems to jostle and shake on its own accord.
 
     Suddenly, the pulse quickens. slamming your mind with incessant pressure. You must leave!
 
     (display: "CurrentSoundMsg")
   ]\
-]\
-
-[[Flee->Tunnel3]]
+]
 
 :: Escape [noInvDisplay noInvLink]
 You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.

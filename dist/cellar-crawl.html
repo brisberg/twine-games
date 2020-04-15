@@ -129,24 +129,31 @@ laquor finish and a golden handle, but has since decayed from misuse]
 Behind the door is a small antechamber with rough hewen stone covering the walls and floor. In each corner is a \
 sconce with a luminous crystal casting red light across the floor.
 
-In the center is a stone pedestal with a fist-sized blood red gem. Its sparkles seem to shift and reverberate with the sound.
-
-(display: &quot;CurrentSoundMsg&quot;)
-
 (if: $heartstone is true)[\
-  [Take the Heartstone]&lt;heartstone|
-  (click-replace: ?heartstone)[\
-    (set: $inv to $inv + (a: &quot;heartstone&quot;))\
-    (set: $heartstone to false)\
+  In the center is a stone pedestal with a fist-sized blood red gem. Its sparkles seem to shift and \
+  reverberate with the sound.
+
+  (display: &quot;CurrentSoundMsg&quot;)
+
+  Take the Heartstone\
+]&lt;heartstone|\
+(else:)[\
+  (display: &quot;CurrentSoundMsg&quot;)
+]
+[[Flee-&gt;Tunnel3]]\
+
+(click: &quot;Take the Heartstone&quot;)[\
+  (set: $inv to $inv + (a: &quot;heartstone&quot;))\
+  (set: $heartstone to false)\
+  (replace: ?heartstone)[\
+    ---
     The gem feels heavy, and warm in your hand. It seems to jostle and shake on its own accord.
 
     Suddenly, the pulse quickens. slamming your mind with incessant pressure. You must leave!
 
     (display: &quot;CurrentSoundMsg&quot;)
   ]\
-]\
-
-[[Flee-&gt;Tunnel3]]</tw-passagedata><tw-passagedata pid="17" name="Escape" tags="noInvDisplay noInvLink" position="850,225" size="100,100">You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
+]</tw-passagedata><tw-passagedata pid="17" name="Escape" tags="noInvDisplay noInvLink" position="850,225" size="100,100">You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
 
 Clutch the Heartstone tightly to your chest. You feel its warmth, and try to forget the Dark Cellar you&#39;ve left behind.
 
