@@ -17,7 +17,7 @@ Use the [Tweego](https://github.com/tmedwards/tweego) twee compiled to compile `
 
 * Make edits to the twee files for your game.
 * Compile it for viewing/distribution
-  * `go run github.com/tmedwards/tweego games/<game> -o dist/<game>.html (-f <format>)`
+  * `go run github.com/tmedwards/tweego games/<game> -o dist/<game>.html --head=analytics.html (-f <format>)`
 
 #### Story Formats
 
@@ -36,4 +36,4 @@ Less perferable, but if you'd like a graphical view of the story structure the c
 * Make any edits / rearrange stories
 * `Publish to File` and overrite the old `<story>.html` file.
 * Run the Tweego decompiler to backport your changes to the `.twee file.
-  * `go run github.com/tmedwards/tweego dist/<game>.html -o games/<game>/<game>.twee -d (-f <format>)`
+  * `go run github.com/tmedwards/tweego dist/<game>.html -o games/<game>/<game>.twee -d(-f <format>)`
