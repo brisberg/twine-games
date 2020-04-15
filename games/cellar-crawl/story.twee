@@ -4,8 +4,8 @@ You stand at the bottom of a ladder into a dark cellar.
 The air smells stale and dusty like it hasen't been moved in years.
 
 (if: $door_locked is true)[\
-There is a [door]<door| with a small, iron lock.
-(click: ?door)[(display: "door")]
+  There is a [door]<door| with a small, iron lock.
+  (click: ?door)[(display: "door")]
 ]\
 (else:)[There is an unlocked [[door->Storeroom]].]
 (if: $inv contains "heartstone")[[[Escape->Escape]] with the Heartstone!]
@@ -36,6 +36,7 @@ You stand in a musky Storeroom. The walls are lined with casks and barrels fille
 (click: "bricks")[\
   (if: $inv contains "hammer")[\
     The brick wall crumbles under your hammer, revealing a [[dark passage->Tunnel1-dark]]\
+    (set: $wall_intact to false)
   ]
   (else:)[\
     The brick wall sounds hollow, but you cannot budge it with your bare hands.
@@ -46,8 +47,11 @@ There is a [[door->Entrance]] back to the entrance.
 
 
 :: Tunnel1-dark
+(set: $thud_lvl to 1)
 (if: $lantern_lit is true)[(goto: "Tunnel1")]
 You crouch in a dark tunnel, unable to see your hand infront of your face.
+
+(display: "CurrentSoundMsg")
 
 (if: $inv contains "lantern")[\
   Light your [lantern]<lantern|.
@@ -60,52 +64,65 @@ You crouch in a dark tunnel, unable to see your hand infront of your face.
 
 
 :: Tunnel1
+(set: $thud_lvl to 1)
 You lantern burns brightly.
 
-The rock walls appears smooth, as if dug by the flowing water pressure. The tunnel makes a turn upahead out of sight.
+The rock walls appears smooth, as if dug by flowing water pressure. The tunnel makes a turn upahead out of sight.
+
+(display: "CurrentSoundMsg")
 
 [[Follow it.->Tunnel2]]
 [[Turn back->Storeroom]]
 
 
 :: Tunnel2
+(set: $thud_lvl to 2)
 It takes some time to crawl through the narrow tunnel, but you make steady progress. Your lantern sputters but remains strong.
-There is a faint, but deep throbbing sound coming from up ahead.
+
+(display: "CurrentSoundMsg")
 
 [[Continue.->Tunnel3]]
 [[Turn back->Tunnel1]]
 
 :: Tunnel3
+(set: $thud_lvl to 3)
 At last the tunnel widens enough for you to nearly stand. You come upon a stone ediface with a worn wooden door with a dull red light leaking under it.
 
 (click: "wooden door")[On closer inspection the door has many thin spindle patterns inlayed in the wood. It once had a \
 laquor finish and a golden handle, but has since decayed from misuse]
 
-The throbbing sound comes from all around you, permeating your thoughts.
+(display: "CurrentSoundMsg")
 
 [[Open the door.->Heartroom]]
 [[Turn back->Tunnel2]]
 
 :: Heartroom
+(set: $thud_lvl to 4)
 Behind the door is a small antechamber with rough hewen stone covering the walls and floor. In each corner is a \
 sconce with a luminous crystal casting red light across the floor.
 
 In the center is a stone pedestal with a fist-sized blood red gem. Its sparkles seem to shift and reverberate with the sound.
 
-The sound is deafening.
+(display: "CurrentSoundMsg")
 
 (if: $heartstone is true)[\
   [Take the Heartstone]<heartstone|
   (click-replace: ?heartstone)[\
-    The gem feels heavy, and warm in your hand. It seems to jostle and shake on its own accord.
-
-    Suddenly, the pulse quickens. Slamming your mind with incessant pressure. You must leave!
     (set: $inv to $inv + (a: "heartstone"))\
     (set: $heartstone to false)\
+    The gem feels heavy, and warm in your hand. It seems to jostle and shake on its own accord.
+
+    Suddenly, the pulse quickens. slamming your mind with incessant pressure. You must leave!
+
+    (display: "CurrentSoundMsg")
   ]\
 ]\
 
 [[Flee->Tunnel3]]
 
 :: Escape [noInvDisplay noInvLink]
+You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
+
+Clutch the Heartstone tightly to your chest. You feel its warmth, and try to forget the Dark Cellar you've left behind.
+
 You Win!

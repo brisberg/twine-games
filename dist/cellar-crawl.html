@@ -11,7 +11,7 @@
 
 <tw-story></tw-story>
 
-<!-- UUID://F546AE48-0F22-44DB-8A69-D78C7F6897D5// --><tw-storydata name="cellar-crawl" startnode="8" creator="Tweego" creator-version="2.1.1" ifid="F546AE48-0F22-44DB-8A69-D78C7F6897D5" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Inventory" tags="noInvLink noInvDisplay" position="400,0" size="100,100">(if: $inv&#39;s length &gt; 0)[You are carrying (print: $inv.join(&quot;, &quot;))]
+<!-- UUID://F546AE48-0F22-44DB-8A69-D78C7F6897D5// --><tw-storydata name="cellar-crawl" startnode="9" creator="Tweego" creator-version="2.1.1" ifid="F546AE48-0F22-44DB-8A69-D78C7F6897D5" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Inventory" tags="noInvLink noInvDisplay" position="400,0" size="100,100">(if: $inv&#39;s length &gt; 0)[You are carrying (print: $inv.join(&quot;, &quot;))]
 (else:)[You are carrying nothing.]
 
 (click: &quot;lantern&quot;)[(display: &quot;lantern-item&quot;)]
@@ -25,29 +25,47 @@
 (set: $storeroom_hammer to true)\
 (set: $wall_intact to true)\
 (set: $heartstone to true)\
-(set: $lantern_lit to false)</tw-passagedata><tw-passagedata pid="7" name="Footer" tags="footer" position="125,0" size="100,100">&lt;!-- Print the Inventory --&gt;
+(set: $lantern_lit to false)\
+(set: $thud_lvl to 0)\
+\
+(set: $sound_msgs to (a:
+	&quot;&quot;,
+	&quot;You feel slight tremors in the rock beneath your feet.&quot;,
+	&quot;There is a faint, but deep throbbing sound coming from up ahead.&quot;,
+	&quot;The throbbing sound comes from the rock all around you, permeating your thoughts.&quot;,
+	&quot;*Bu-dum* *Bu-dum*. The walls themselves scream at you with a deafening cacophony.&quot;,
+))\
+(set: $panic_msgs to (a:
+	&quot;&quot;,
+	&quot;The low thudding is faint now.&quot;,
+	&quot;The beating sound is more distant now. You still feel it in your feet, but can hear your thoughts again.&quot;,
+	&quot;Paniced thudding echoes and shakes the tunnel behind you.&quot;,
+	&quot;*Bu-dum-dum* *Bu-dum-dum*. The rising thrumming shakes the walls, which shower you in gravel in protest.&quot;,
+))</tw-passagedata><tw-passagedata pid="7" name="Footer" tags="footer" position="125,0" size="100,100">&lt;!-- Print the Inventory --&gt;
 (if: $inv&#39;s length &gt; 0)[
   (if: (passage:)&#39;s tags contains &quot;noInvDisplay&quot;)[]\
   (else:)[You are carrying (print: $inv.join(&quot;, &quot;))]
   (if: (passage:)&#39;s tags contains &quot;noInvLink&quot;)[]\
   (else:)[Check [[inventory-&gt;Inventory]]]
-]</tw-passagedata><tw-passagedata pid="8" name="Entrance" tags="" position="25,125" size="100,100">You stand at the bottom of a ladder into a dark cellar.
+]</tw-passagedata><tw-passagedata pid="8" name="CurrentSoundMsg" tags="" position="975,100" size="100,100">&lt;!-- Print current sound level message --&gt;\
+(if: $heartstone is true)[(print: $sound_msgs[$thud_lvl])]\
+(else:)[(print: $panic_msgs[$thud_lvl])]</tw-passagedata><tw-passagedata pid="9" name="Entrance" tags="" position="25,125" size="100,100">You stand at the bottom of a ladder into a dark cellar.
 
 The air smells stale and dusty like it hasen&#39;t been moved in years.
 
 (if: $door_locked is true)[\
-There is a [door]&lt;door| with a small, iron lock.
-(click: ?door)[(display: &quot;door&quot;)]
+  There is a [door]&lt;door| with a small, iron lock.
+  (click: ?door)[(display: &quot;door&quot;)]
 ]\
 (else:)[There is an unlocked [[door-&gt;Storeroom]].]
-(if: $inv contains &quot;heartstone&quot;)[[[Escape-&gt;Escape]] with the Heartstone!]</tw-passagedata><tw-passagedata pid="9" name="door" tags="noInvLink noInvDisplay" position="25,250" size="100,100">(if: $door_locked is true)[\
+(if: $inv contains &quot;heartstone&quot;)[[[Escape-&gt;Escape]] with the Heartstone!]</tw-passagedata><tw-passagedata pid="10" name="door" tags="noInvLink noInvDisplay" position="25,250" size="100,100">(if: $door_locked is true)[\
   (if: $inv contains &quot;rusty key&quot;)[\
 	You unlock the [[door-&gt;Storeroom]] with the Rusty Key.
 	(set: $inv to $inv - (a: &quot;rusty key&quot;))
 	(set: $door_locked to false)
   ]\
   (else:)[The door is locked and requires a key]
-]</tw-passagedata><tw-passagedata pid="10" name="Storeroom" tags="" position="150,125" size="100,100">You stand in a musky Storeroom. The walls are lined with casks and barrels filled with long forgotten wine.
+]</tw-passagedata><tw-passagedata pid="11" name="Storeroom" tags="" position="150,125" size="100,100">You stand in a musky Storeroom. The walls are lined with casks and barrels filled with long forgotten wine.
 
 (if: $storeroom_hammer is true)[There is a hammer resting on the table.]&lt;hammer|
 (click-replace: ?hammer)[You take the hammer.\
@@ -59,15 +77,19 @@ There is a [door]&lt;door| with a small, iron lock.
 (else:)[The broken wall reveals a [[dark passage-&gt;Tunnel1]]]
 (click: &quot;bricks&quot;)[\
   (if: $inv contains &quot;hammer&quot;)[\
-    You savagely destroy the wall with your hammer, revealing a [[dark passage-&gt;Tunnel1-dark]]\
+    The brick wall crumbles under your hammer, revealing a [[dark passage-&gt;Tunnel1-dark]]\
+    (set: $wall_intact to false)
   ]
   (else:)[\
     The brick wall sounds hollow, but you cannot budge it with your bare hands.
   ]
 ]
 
-There is a [[door-&gt;Entrance]] back to the entrance.</tw-passagedata><tw-passagedata pid="11" name="Tunnel1-dark" tags="" position="100,225" size="100,100">(if: $lantern_lit is true)[(goto: &quot;Tunnel1&quot;)]
+There is a [[door-&gt;Entrance]] back to the entrance.</tw-passagedata><tw-passagedata pid="12" name="Tunnel1-dark" tags="" position="225,225" size="100,100">(set: $thud_lvl to 1)
+(if: $lantern_lit is true)[(goto: &quot;Tunnel1&quot;)]
 You crouch in a dark tunnel, unable to see your hand infront of your face.
+
+(display: &quot;CurrentSoundMsg&quot;)
 
 (if: $inv contains &quot;lantern&quot;)[\
   Light your [lantern]&lt;lantern|.
@@ -76,42 +98,55 @@ You crouch in a dark tunnel, unable to see your hand infront of your face.
     (goto: &quot;Tunnel1&quot;)
   ]
 ]
-[[Turn back-&gt;Storeroom]]</tw-passagedata><tw-passagedata pid="12" name="Tunnel1" tags="" position="225,225" size="100,100">You lantern burns brightly.
+[[Turn back-&gt;Storeroom]]</tw-passagedata><tw-passagedata pid="13" name="Tunnel1" tags="" position="350,225" size="100,100">(set: $thud_lvl to 1)
+You lantern burns brightly.
 
-The rock walls appears smooth, as if dug by the pressure of water. The tunnel makes a turn upahead out of sight.
+The rock walls appears smooth, as if dug by flowing water pressure. The tunnel makes a turn upahead out of sight.
+
+(display: &quot;CurrentSoundMsg&quot;)
 
 [[Follow it.-&gt;Tunnel2]]
-[[Turn back-&gt;Storeroom]]</tw-passagedata><tw-passagedata pid="13" name="Tunnel2" tags="" position="350,225" size="100,100">It takes some time to crawl through the narrow tunnel, but you make steady progress. Your lantern sputters but remains strong.
-There is a faint, but deep throbbing sound coming from up ahead.
+[[Turn back-&gt;Storeroom]]</tw-passagedata><tw-passagedata pid="14" name="Tunnel2" tags="" position="475,225" size="100,100">(set: $thud_lvl to 2)
+It takes some time to crawl through the narrow tunnel, but you make steady progress. Your lantern sputters but remains strong.
+
+(display: &quot;CurrentSoundMsg&quot;)
 
 [[Continue.-&gt;Tunnel3]]
-[[Turn back-&gt;Tunnel1]]</tw-passagedata><tw-passagedata pid="14" name="Tunnel3" tags="" position="475,225" size="100,100">At last the tunnel widens enough for you to nearly stand. You come upon a stone ediface with a worn wooden door with a dull red light leaking under it.
+[[Turn back-&gt;Tunnel1]]</tw-passagedata><tw-passagedata pid="15" name="Tunnel3" tags="" position="600,225" size="100,100">(set: $thud_lvl to 3)
+At last the tunnel widens enough for you to nearly stand. You come upon a stone ediface with a worn wooden door with a dull red light leaking under it.
 
 (click: &quot;wooden door&quot;)[On closer inspection the door has many thin spindle patterns inlayed in the wood. It once had a \
 laquor finish and a golden handle, but has since decayed from misuse]
 
-The throbbing sound comes from all around you, permeating your thoughts.
+(display: &quot;CurrentSoundMsg&quot;)
 
 [[Open the door.-&gt;Heartroom]]
-[[Turn back-&gt;Tunnel2]]</tw-passagedata><tw-passagedata pid="15" name="Heartroom" tags="" position="600,225" size="100,100">Behind the door is a small antechamber with rough hewen stone covering the walls and floor. In each corner is a \
+[[Turn back-&gt;Tunnel2]]</tw-passagedata><tw-passagedata pid="16" name="Heartroom" tags="" position="725,225" size="100,100">(set: $thud_lvl to 4)
+Behind the door is a small antechamber with rough hewen stone covering the walls and floor. In each corner is a \
 sconce with a luminous crystal casting red light across the floor.
 
 In the center is a stone pedestal with a fist-sized blood red gem. Its sparkles seem to shift and reverberate with the sound.
 
-The sound is deafening.
+(display: &quot;CurrentSoundMsg&quot;)
 
 (if: $heartstone is true)[\
   [Take the Heartstone]&lt;heartstone|
   (click-replace: ?heartstone)[\
-    The gem feels heavy, and warm in your hand. It seems to jostle and shake on its own accord.
-
-    Suddenly, the pulse quickens. Slamming your mind with incessant pressure. You must leave!
     (set: $inv to $inv + (a: &quot;heartstone&quot;))\
     (set: $heartstone to false)\
+    The gem feels heavy, and warm in your hand. It seems to jostle and shake on its own accord.
+
+    Suddenly, the pulse quickens. slamming your mind with incessant pressure. You must leave!
+
+    (display: &quot;CurrentSoundMsg&quot;)
   ]\
 ]\
 
-[[Flee-&gt;Tunnel3]]</tw-passagedata><tw-passagedata pid="16" name="Escape" tags="noInvDisplay noInvLink" position="725,225" size="100,100">You Win!</tw-passagedata></tw-storydata>
+[[Flee-&gt;Tunnel3]]</tw-passagedata><tw-passagedata pid="17" name="Escape" tags="noInvDisplay noInvLink" position="850,225" size="100,100">You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
+
+Clutch the Heartstone tightly to your chest. You feel its warmth, and try to forget the Dark Cellar you&#39;ve left behind.
+
+You Win!</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
