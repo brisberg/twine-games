@@ -17,7 +17,7 @@ Use the [Tweego](https://github.com/tmedwards/tweego) twee compiled to compile `
 
 * Make edits to the twee files for your game.
 * Compile it for viewing/distribution
-  * `go run github.com/tmedwards/tweego games/<game> -o dist/<game>.html --head=analytics.html (-f <format>)`
+  * `sh build.sh <game>`
 
 #### Story Formats
 
@@ -36,4 +36,18 @@ Less perferable, but if you'd like a graphical view of the story structure the c
 * Make any edits / rearrange stories
 * `Publish to File` and overrite the old `<story>.html` file.
 * Run the Tweego decompiler to backport your changes to the `.twee file.
-  * `go run github.com/tmedwards/tweego dist/<game>.html -o games/<game>/<game>.twee -d(-f <format>)`
+  * `go run github.com/tmedwards/tweego dist/<game>.html -o games/<game>/<game>.twee -d (-f <format>)`
+
+### Analytics
+
+This project uses Google Analytics and Google Tag Manager to track user engagement.
+
+The `analytics.html` file initializes a GTM dataLayer for the container of all TwineGames: `GTM-T6XR5LZ`. This does not need to be modified per game, just set up a unique trigger/tag for each game and use the GameName as the `event` name.
+
+Be sure to forward the GTM tag to a specific GA Property for each game.
+
+#### Events
+
+Because Twine games are run as a single page, GTM will only pick up a single page view event by default. If you want to track other engagement, you must provide custom events (such as "Start", "Finish", "Dead", etc).
+
+Follow this [naming scheme](https://mixedanalytics.com/blog/event-tracking-naming-strategy-for-google-analytics/) for custom events.
