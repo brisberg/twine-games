@@ -1,18 +1,18 @@
 :: StoryTitle
 cellar-crawl
 
-
 :: StoryData
 {
 	"ifid": "F546AE48-0F22-44DB-8A69-D78C7F6897D5",
 	"format": "Harlowe",
 	"format-version": "3.1.0",
 	"start": "Entrance",
-	"zoom": 1
+	"zoom": 1,
 }
 
 :: Starup [startup] {"position":"25,0","size":"100,100"}
 <!-- Set up Initial Variables -->\
+<mark><script>dataLayer.push({event: 'Story Start'})</script></mark>\
 (set: $inv to (a: "lantern", "rusty key"))\
 (set: $door_locked to true)\
 (set: $storeroom_hammer to true)\
