@@ -12,7 +12,16 @@ cellar-crawl
 
 :: Starup [startup] {"position":"25,0","size":"100,100"}
 <!-- Set up Initial Variables -->\
-<mark><script>dataLayer.push({event: 'Story Start'})</script></mark>\
+<mark><script>
+  console.log('Trigger start event');
+	window.dataLayer = window.dataLayer || [];
+	dataLayer.push({
+		'event': 'eventTracking',
+		'category': 'Story',
+		'action': 'Start',
+		'label': ''
+	});
+</script></mark>\
 (set: $inv to (a: "lantern", "rusty key"))\
 (set: $door_locked to true)\
 (set: $storeroom_hammer to true)\
