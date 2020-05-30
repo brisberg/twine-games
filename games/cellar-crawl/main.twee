@@ -16,7 +16,7 @@ cellar-crawl
   console.log('Trigger start event');
 	window.dataLayer = window.dataLayer || [];
 	dataLayer.push({
-		'event': 'eventTracking',
+		'event': 'cellar-crawl',
 		'category': 'Story',
 		'action': 'Start',
 		'label': ''

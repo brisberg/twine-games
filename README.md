@@ -5,8 +5,8 @@ Play them [online](https://brisberg.github.io/twine-games/dist)!
 
 ## Install
 
-Install [golang](https://golang.org/doc/install) for your system.
-Install the Tweego compiled
+Install [golang](https://golang.org/doc/install) for your system.\
+Install the Tweego compiled binary with:\
 `go get github.com/tmedwards/tweego`
 
 ## Editing

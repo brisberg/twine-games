@@ -30,7 +30,7 @@ You stand in a musky Storeroom. The walls are lined with casks and barrels fille
   <mark><script>
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-      'event': 'eventTracking',
+      'event': 'cellar-crawl',
       'category': 'Story',
       'action': 'Hammer',
       'label': 'Take'
@@ -131,7 +131,7 @@ sconce with a luminous crystal casting red light across the floor.
   <mark><script>
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-      'event': 'eventTracking',
+      'event': 'cellar-crawl',
       'category': 'Story',
       'action': 'Heartstone',
       'label': 'Take'
@@ -153,7 +153,7 @@ sconce with a luminous crystal casting red light across the floor.
 <mark><script>
 	window.dataLayer = window.dataLayer || [];
 	dataLayer.push({
-		'event': 'eventTracking',
+		'event': 'cellar-crawl',
 		'category': 'Story',
 		'action': 'Finish',
 		'label': 'Escape'
