@@ -1,4 +1,4 @@
-# Dark Cellar
+# Dark Cellar 1.0.0
 
 A simple adventure game exploring the dark cellar under an abandoned house. Navigate various rooms and puzzles to find the heart of the cellar.
 
