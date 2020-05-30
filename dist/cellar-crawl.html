@@ -21,7 +21,19 @@
 
 <tw-story></tw-story>
 
-<!-- UUID://F546AE48-0F22-44DB-8A69-D78C7F6897D5// --><tw-storydata name="cellar-crawl" startnode="9" creator="Tweego" creator-version="2.1.1" ifid="F546AE48-0F22-44DB-8A69-D78C7F6897D5" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Inventory" tags="noInvLink noInvDisplay" position="400,0" size="100,100">(if: $inv&#39;s length &gt; 0)[You are carrying (print: $inv.join(&quot;, &quot;))]
+<!-- UUID://F546AE48-0F22-44DB-8A69-D78C7F6897D5// --><tw-storydata name="cellar-crawl" startnode="9" creator="Tweego" creator-version="2.1.1" ifid="F546AE48-0F22-44DB-8A69-D78C7F6897D5" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "analytics.js" */
+window.pushEvent = function(category, action, label, value) {
+  window.dataLayer.push({
+    event: GAME_NAME,
+    category,
+    action,
+    label,
+    value,
+  });
+}
+/* twine-user-script #2: "init.js" */
+window.GAME_NAME = 'cellar-crawl';
+</script><tw-passagedata pid="1" name="Inventory" tags="noInvLink noInvDisplay" position="400,0" size="100,100">(if: $inv&#39;s length &gt; 0)[You are carrying (print: $inv.join(&quot;, &quot;))]
 (else:)[You are carrying nothing.]
 
 (click: &quot;lantern&quot;)[(display: &quot;lantern-item&quot;)]
@@ -30,16 +42,7 @@
 (click: &quot;heartstone&quot;)[(display: &quot;heartstone-item&quot;)]
 
 (link-goto: &quot;Return&quot;, (history:)&#39;s last)</tw-passagedata><tw-passagedata pid="2" name="lantern-item" tags="item" position="600,0" size="100,100">A copper, hooded lantern with a small oil burner which easily illuminates a room. It appears to have plenty of oil.</tw-passagedata><tw-passagedata pid="3" name="rusty-key-item" tags="item" position="700,0" size="100,100">An old, rusted iron key.</tw-passagedata><tw-passagedata pid="4" name="hammer-item" tags="item" position="800,0" size="100,100">A solid iron sledge hammer.</tw-passagedata><tw-passagedata pid="5" name="heartstone-item" tags="item" position="900,0" size="100,100">A fist-sized red gem with a low luminescence in its core. The stone is warm to the touch and pulses and jitters in your hand.</tw-passagedata><tw-passagedata pid="6" name="Starup" tags="startup" position="25,0" size="100,100">&lt;!-- Set up Initial Variables --&gt;\
-&lt;mark&gt;&lt;script&gt;
-  console.log(&#39;Trigger start event&#39;);
-	window.dataLayer = window.dataLayer || [];
-	dataLayer.push({
-		&#39;event&#39;: &#39;cellar-crawl&#39;,
-		&#39;category&#39;: &#39;Story&#39;,
-		&#39;action&#39;: &#39;Start&#39;,
-		&#39;label&#39;: &#39;&#39;
-	});
-&lt;/script&gt;&lt;/mark&gt;\
+&lt;script&gt;pushEvent(&#39;Story&#39;, &#39;Start&#39;, &#39;&#39;);&lt;/script&gt;\
 (set: $inv to (a: &quot;lantern&quot;, &quot;rusty key&quot;))\
 (set: $door_locked to true)\
 (set: $storeroom_hammer to true)\
@@ -89,15 +92,7 @@ The air smells stale and dusty like it hasen&#39;t been moved in years.
 
 (if: $storeroom_hammer is true)[There is a hammer resting on the table.]&lt;hammer|
 (click-replace: ?hammer)[You take the hammer.\
-  &lt;mark&gt;&lt;script&gt;
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      &#39;event&#39;: &#39;cellar-crawl&#39;,
-      &#39;category&#39;: &#39;Story&#39;,
-      &#39;action&#39;: &#39;Hammer&#39;,
-      &#39;label&#39;: &#39;Take&#39;
-    });
-  &lt;/script&gt;&lt;/mark&gt;\
+  &lt;script&gt;pushEvent(&#39;Story&#39;, &#39;Hammer&#39;, &#39;Take&#39;)&lt;/script&gt;\
   (set: $inv to $inv + (a: &quot;hammer&quot;))\
   (set: $storeroom_hammer to false)\
 ]
@@ -172,15 +167,7 @@ sconce with a luminous crystal casting red light across the floor.
 [[Flee-&gt;Tunnel3]]\
 
 (click: &quot;Take the Heartstone&quot;)[\
-  &lt;mark&gt;&lt;script&gt;
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      &#39;event&#39;: &#39;cellar-crawl&#39;,
-      &#39;category&#39;: &#39;Story&#39;,
-      &#39;action&#39;: &#39;Heartstone&#39;,
-      &#39;label&#39;: &#39;Take&#39;
-    });
-  &lt;/script&gt;&lt;/mark&gt;\
+  &lt;script&gt;pushEvent(&#39;Story&#39;, &#39;Heartstone&#39;, &#39;Take&#39;)&lt;/script&gt;\
   (set: $inv to $inv + (a: &quot;heartstone&quot;))\
   (set: $heartstone to false)\
   (replace: ?heartstone)[\
@@ -191,15 +178,7 @@ sconce with a luminous crystal casting red light across the floor.
 
     (display: &quot;CurrentSoundMsg&quot;)
   ]\
-]</tw-passagedata><tw-passagedata pid="17" name="Escape" tags="noInvDisplay noInvLink" position="850,225" size="100,100">&lt;mark&gt;&lt;script&gt;
-	window.dataLayer = window.dataLayer || [];
-	dataLayer.push({
-		&#39;event&#39;: &#39;cellar-crawl&#39;,
-		&#39;category&#39;: &#39;Story&#39;,
-		&#39;action&#39;: &#39;Finish&#39;,
-		&#39;label&#39;: &#39;Escape&#39;
-	});
-&lt;/script&gt;&lt;/mark&gt;\
+]</tw-passagedata><tw-passagedata pid="17" name="Escape" tags="noInvDisplay noInvLink" position="850,225" size="100,100">&lt;script&gt;pushEvent(&#39;Story&#39;, &#39;Finish&#39;, &#39;Escape&#39;)&lt;/script&gt;\
 You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
 
 Clutch the Heartstone tightly to your chest. You feel its warmth, and try to forget the Dark Cellar you&#39;ve left behind.

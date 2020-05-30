@@ -27,15 +27,7 @@ You stand in a musky Storeroom. The walls are lined with casks and barrels fille
 
 (if: $storeroom_hammer is true)[There is a hammer resting on the table.]<hammer|
 (click-replace: ?hammer)[You take the hammer.\
-  <mark><script>
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      'event': 'cellar-crawl',
-      'category': 'Story',
-      'action': 'Hammer',
-      'label': 'Take'
-    });
-  </script></mark>\
+  <script>pushEvent('Story', 'Hammer', 'Take')</script>\
   (set: $inv to $inv + (a: "hammer"))\
   (set: $storeroom_hammer to false)\
 ]
@@ -128,15 +120,7 @@ sconce with a luminous crystal casting red light across the floor.
 [[Flee->Tunnel3]]\
 
 (click: "Take the Heartstone")[\
-  <mark><script>
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      'event': 'cellar-crawl',
-      'category': 'Story',
-      'action': 'Heartstone',
-      'label': 'Take'
-    });
-  </script></mark>\
+  <script>pushEvent('Story', 'Heartstone', 'Take')</script>\
   (set: $inv to $inv + (a: "heartstone"))\
   (set: $heartstone to false)\
   (replace: ?heartstone)[\
@@ -150,15 +134,7 @@ sconce with a luminous crystal casting red light across the floor.
 ]
 
 :: Escape [noInvDisplay noInvLink]
-<mark><script>
-	window.dataLayer = window.dataLayer || [];
-	dataLayer.push({
-		'event': 'cellar-crawl',
-		'category': 'Story',
-		'action': 'Finish',
-		'label': 'Escape'
-	});
-</script></mark>\
+<script>pushEvent('Story', 'Finish', 'Escape')</script>\
 You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
 
 Clutch the Heartstone tightly to your chest. You feel its warmth, and try to forget the Dark Cellar you've left behind.
