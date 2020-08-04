@@ -15,6 +15,7 @@ Journey
 <<set $crew to setup.initialState.crew>>
 <<set $fuel to setup.initialState.fuel>>
 <<set $distance to setup.initialState.distance>>
+<<script>>pushEvent('Story', 'Start', '');<</script>>
 
 :: PassageHeader
 You are $distance leagues away from your destination.

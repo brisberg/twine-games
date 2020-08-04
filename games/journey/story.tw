@@ -46,6 +46,7 @@ Your Voyage ends here.
 Your engines chug to a stop as the last bits of coal are used up. You and your men look around \
 at each other in despair as you realize you will likely starve or freeze before anyone can reach you.
 
+<<script>>pushEvent('Story', 'Lose', 'No Fuel');<</script>>\
 <<include "Try Again">>
 
 
@@ -61,6 +62,7 @@ a long forgotten sandbar. The ship is beached permanently and it would take ten 
 You feel so very tired. As you drift off to a final slumber, you wonder if another captain will \
 find your ship and make better use of your supplies.
 
+<<script>>pushEvent('Story', 'Lose', 'No Crew');<</script>>\
 <<include "Try Again">>
 
 
@@ -76,6 +78,7 @@ dingy and cram aboard. Some leaping to the water to swim for it.
 However, they say a Captain must go down with his ship. You remain aboard, sipping wine \
 as your crew rows into the distance and water slowly fills your cabin.
 
+<<script>>pushEvent('Story', 'Lose', 'No Hull');<</script>>\
 <<include "Try Again">>
 
 
@@ -105,3 +108,4 @@ You are treated to a find dinner in your honor by the Govenor of the island.
 You and your crew enjoy yourself for a time, but soon you feel the sea calling to you again.
 
 Will you set sail on another <<link "Voyage?">><<script>>UI.restart()<</script>><</link>>
+<<script>>pushEvent('Story', 'Win', '');<</script>>
