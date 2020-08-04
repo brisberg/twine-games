@@ -1,0 +1,35 @@
+:: StoryTitle
+Journey
+
+:: StoryData
+{
+	"ifid": "F76EC9DD-8B3B-43FE-A9F2-FA26005C9260",
+	"format": "SugarCube",
+	"format-version": "2.31.1",
+	"start": "Entrance",
+	"zoom": 1
+}
+
+:: StoryInit
+<<set $shipHull to setup.initialState.hull>>
+<<set $crew to setup.initialState.crew>>
+<<set $fuel to setup.initialState.fuel>>
+
+:: Entrance
+This is the entrance
+<<print customPrint()>>
+<<print GAME_NAME>>
+
+You ship structural integrity is <<print $shipHull>>.
+You have <<print $crew>> crewmen on board.
+You have <<print $fuel>> fuel remaining.
+
+:: PassageHeader [nobr]
+This is the special header
+<br>
+<br>
+
+:: PassageFooter [nobr]
+<br>
+<br>
+This is the special footer
