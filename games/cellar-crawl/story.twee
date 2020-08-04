@@ -135,7 +135,7 @@ sconce with a luminous crystal casting red light across the floor.
 
 :: Escape [noInvDisplay noInvLink]
 <script>pushEvent('Story', 'Finish', 'Escape')</script>\
-You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
+You climb out into the night air and run swiftly from the rickety house, still swaying in the wind like a dying animal.
 
 Clutch the Heartstone tightly to your chest. You feel its warmth, and try to forget the Dark Cellar you've left behind.
 
