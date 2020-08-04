@@ -1,0 +1,21 @@
+:: Launch
+Flags fly high, husbands and wives wave from the pier, and bells ring as your vessle, H.M.S Titus, \
+leaves Port Royal on its maiden voyage.
+
+Your ship is in tip-top shape and the crew is filled with joy and vigor.
+
+The task ahead of you is a simple but important one: Voyage to Isla Dem'uerta and deliver much \
+needed supplies and munitions to colony there.
+
+<<set $event to "Calm Seas">>
+[[Embark->Voyage]]
+
+:: Voyage
+You are on your voyage!
+
+<<include $event>>
+
+<<set $event to randomEvent()>>\
+<<set $fuel -= 1>>\
+<<set $distance -= 100>>\
+[[Onward!->Voyage]]
