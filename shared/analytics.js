@@ -1,4 +1,4 @@
-window.pushEvent = function(category, action, label, value) {
+window.pushEvent = (category, action, label, value) => {
   window.dataLayer.push({
     event: GAME_NAME,
     category,
@@ -6,4 +6,4 @@ window.pushEvent = function(category, action, label, value) {
     label,
     value,
   });
-}
+};

@@ -22,7 +22,7 @@
 <tw-story></tw-story>
 
 <!-- UUID://F546AE48-0F22-44DB-8A69-D78C7F6897D5// --><tw-storydata name="Cellar Crawl" startnode="9" creator="Tweego" creator-version="2.1.1" ifid="F546AE48-0F22-44DB-8A69-D78C7F6897D5" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "analytics.js" */
-window.pushEvent = function(category, action, label, value) {
+window.pushEvent = (category, action, label, value) => {
   window.dataLayer.push({
     event: GAME_NAME,
     category,
@@ -30,7 +30,7 @@ window.pushEvent = function(category, action, label, value) {
     label,
     value,
   });
-}
+};
 /* twine-user-script #2: "init.js" */
 window.GAME_NAME = 'cellar-crawl';
 </script><tw-passagedata pid="1" name="Inventory" tags="noInvLink noInvDisplay" position="400,0" size="100,100">(if: $inv&#39;s length &gt; 0)[You are carrying (print: $inv.join(&quot;, &quot;))]
@@ -179,7 +179,7 @@ sconce with a luminous crystal casting red light across the floor.
     (display: &quot;CurrentSoundMsg&quot;)
   ]\
 ]</tw-passagedata><tw-passagedata pid="17" name="Escape" tags="noInvDisplay noInvLink" position="850,225" size="100,100">&lt;script&gt;pushEvent(&#39;Story&#39;, &#39;Finish&#39;, &#39;Escape&#39;)&lt;/script&gt;\
-You climb out into the night air and run swiftly from the rickety house, still staying in the wind like a dying animal.
+You climb out into the night air and run swiftly from the rickety house, still swaying in the wind like a dying animal.
 
 Clutch the Heartstone tightly to your chest. You feel its warmth, and try to forget the Dark Cellar you&#39;ve left behind.
 
