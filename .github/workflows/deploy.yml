@@ -1,12 +1,12 @@
-name: Deploy
+name: Build and Deploy
 
 on:
   push:
     branches:
-      - gh-actions
+      - release
 
 jobs:
-  build_deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
