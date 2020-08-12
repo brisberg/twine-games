@@ -110,17 +110,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://F76EC9DD-8B3B-43FE-A9F2-FA26005C9260// --><tw-storydata name="Journey" startnode="8" creator="Tweego" creator-version="2.1.1" ifid="F76EC9DD-8B3B-43FE-A9F2-FA26005C9260" zoom="1" format="SugarCube" format-version="2.31.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "analytics.js" */
-window.pushEvent = (category, action, label, value) => {
-  window.dataLayer.push({
-    event: GAME_NAME,
-    category,
-    action,
-    label,
-    value,
-  });
-};
-/* twine-user-script #2: "init.js" */
+	<!-- UUID://F76EC9DD-8B3B-43FE-A9F2-FA26005C9260// --><tw-storydata name="Journey" startnode="8" creator="Tweego" creator-version="2.1.1" ifid="F76EC9DD-8B3B-43FE-A9F2-FA26005C9260" zoom="1" format="SugarCube" format-version="2.31.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "init.js" */
 // Game Name key (for analytics)
 window.GAME_NAME = 'journey';
 
@@ -154,6 +144,16 @@ window.randomEvent = () => {
   const index = Math.floor(Math.random() * setup.events.length);
   return setup.events[index];
 }
+/* twine-user-script #2: "analytics.js" */
+window.pushEvent = (category, action, label, value) => {
+  window.dataLayer.push({
+    event: GAME_NAME,
+    category,
+    action,
+    label,
+    value,
+  });
+};
 </script><tw-passagedata pid="1" name="Calm Seas" tags="" position="100,100" size="100,100">The seas are calm with a slight, salty southernly breeze. Your crew are in good spirits as they unfurl the \
 sails and tend to the rigging.
 
