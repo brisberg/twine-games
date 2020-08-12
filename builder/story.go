@@ -42,7 +42,7 @@ func BuildTwineStory(story *Story) error {
 	out, err := cmd.CombinedOutput()
 
 	fmt.Printf("%s\n", out)
-	fmt.Printf("Build '%s' as %s\n", story.Name, output)
+	fmt.Printf("Built '%s' as %s\n", story.Name, output)
 
 	return err
 }
