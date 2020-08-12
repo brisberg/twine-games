@@ -1,7 +1,7 @@
 # Twine Games
 Set of simple browser games built in Twine
 
-Play them [online](https://brisberg.github.io/twine-games/dist)!
+Play them [online](https://brisberg.github.io/twine-games/)!
 
 ## Install
 
