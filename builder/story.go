@@ -59,7 +59,7 @@ func BuildTwineStory(story *Story) error {
 		return fmt.Errorf("Failed to compile header file: %v", err)
 	}
 
-	output := "dist/" + story.ID + ".html"
+	output := "genfiles/games/" + story.ID + ".html"
 	args := []string{
 		"--log-files", "-l",
 		"--head=" + headfile,
@@ -81,7 +81,7 @@ func BuildTwineStory(story *Story) error {
 }
 
 func compileHeadHTML(story *Story) (string, error) {
-	outpath := "genfiles/" + story.ID + ".head.html"
+	outpath := "genfiles/header/" + story.ID + ".head.html"
 
 	// open the out file for writing
 	outfile, err := os.Create(outpath)

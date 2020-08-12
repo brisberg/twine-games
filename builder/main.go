@@ -16,8 +16,14 @@ func main() {
 	// Create dist directory for tweego outputs
 	os.MkdirAll("dist", os.ModePerm)
 
-	// Create the index markdown file
+	// Create all output directories
+	// Public directory for markdown files
 	os.MkdirAll("genfiles/public", os.ModePerm)
+	// Games directory for compiled game html files
+	os.MkdirAll("genfiles/games", os.ModePerm)
+	// Header directory for combined header html files
+	os.MkdirAll("genfiles/header", os.ModePerm)
+
 	mdfile, err := os.Create("genfiles/public/README.md")
 	if err != nil {
 		log.Fatalf("Failed to open README output file: %v", err)
