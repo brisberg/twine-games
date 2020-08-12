@@ -24,8 +24,8 @@ jobs:
       - name: Build Stories
         run: |
           mkdir dist
-          ./build.sh journey
-          ./build.sh cellar-crawl
+          go get gopkg.in/yaml.v2
+          go run builder/*
 
       - name: Prepare Deploy Package
         run: cp public/* dist
