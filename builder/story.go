@@ -13,6 +13,9 @@ type Story struct {
 	// ID (used for file paths, analytic keys, etc)
 	ID string
 
+	// Version is a semvar string representing the story version
+	Version string
+
 	// Human readable Title of the story
 	Title string
 
