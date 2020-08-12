@@ -1,6 +1,6 @@
-## {{.Name}}
+## {{.Title}}
 
-Explore the dark cellar beneith a creepy house to discover its secret.
+{{.Description}}
 
-[Play]({{.Name}})
+[Play]({{.ID}})
 {{print ""}}

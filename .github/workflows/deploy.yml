@@ -23,8 +23,6 @@ jobs:
 
       - name: Build Stories
         run: |
-          mkdir dist
-          mkdir genfiles
           go get gopkg.in/yaml.v2
           go run builder/*
 

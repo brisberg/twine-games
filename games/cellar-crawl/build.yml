@@ -1,4 +1,6 @@
-name: "cellar-crawl"
+id: "cellar-crawl"
+title: "Cellar Crawl"
+description: "Explore the dark cellar beneith a creepy house to discover its secret."
 head:
   - "shared/analytics/header/analytics.html"
 deps:
