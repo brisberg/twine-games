@@ -13,11 +13,11 @@ Install the Tweego compiled binary with:\
 
 ### Tweego
 
-Use the [Tweego](https://github.com/tmedwards/tweego) twee compiled to compile `.twee` files into build `.html` files ready for viewing.
+Use the [Tweego](https://github.com/tmedwards/tweego) twee compiler to compile `.twee` or `.tw` files into built `.html` files ready for viewing.
 
-* Make edits to the twee files for your game.
+* Make edits to the `.twee` or `.tw` files for your game.
 * Compile it for viewing/distribution
-  * `sh build.sh <game>`
+  * `go run builder/*`
 
 #### Story Formats
 
