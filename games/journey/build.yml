@@ -1,4 +1,6 @@
 name: "journey"
+head:
+  - "shared/analytics/header/analytics.html"
 deps:
   - "games/journey"
-  - "shared"
+  - "shared/analytics/js"

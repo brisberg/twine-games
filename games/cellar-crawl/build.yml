@@ -1,4 +1,6 @@
 name: "cellar-crawl"
+head:
+  - "shared/analytics/header/analytics.html"
 deps:
   - "games/cellar-crawl"
-  - "shared"
+  - "shared/analytics/js"

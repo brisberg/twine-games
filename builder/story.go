@@ -2,13 +2,22 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
 	"os/exec"
 )
 
 // Story is the full build definition for a Twine game.
 type Story struct {
+	// Name/StoryKey (used for file paths, analytics key, etc)
 	Name string
+
+	// List of directories containing twee files to compile
 	Deps []string
+
+	// List of .html files to concatinate into the <head> tag
+	Head []string
 }
 
 // ReadStoryFromFile returns a new decoded Story struct
@@ -36,10 +45,15 @@ func ReadStoryFromFile(filePath string) (*Story, error) {
 // 				shared/ \
 // 				games/$game
 func BuildTwineStory(story *Story) error {
+	headfile, err := compileHeadHTML(story)
+	if err != nil {
+		return fmt.Errorf("Failed to compile header file: %v", err)
+	}
+
 	output := "dist/" + story.Name + ".html"
 	args := []string{
 		"--log-files", "-l",
-		"--head=analytics.html",
+		"--head=" + headfile,
 		"-o", output,
 	}
 	args = append(args, story.Deps...)
@@ -47,9 +61,49 @@ func BuildTwineStory(story *Story) error {
 	cmd := exec.Command("tweego", args...)
 	// fmt.Printf("cmd: %v\n", cmd)
 	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("Failed to build '%s': %s", story.Name, err)
+	}
 
 	fmt.Printf("%s\n", out)
 	fmt.Printf("Built '%s' as %s\n", story.Name, output)
 
 	return err
+}
+
+func compileHeadHTML(story *Story) (string, error) {
+	outpath := "genfiles/" + story.Name + ".head.html"
+
+	// open the out file for writing
+	outfile, err := os.Create(outpath)
+	if err != nil {
+		return "", err
+	}
+	defer outfile.Close()
+
+	cmd := exec.Command("cat", story.Head...)
+	// Output the combined html to a file
+	cmd.Stdout = outfile
+
+	// Read Stderr in case 'cat' command fails
+	stderr, err := cmd.StderrPipe()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Start command
+	if err := cmd.Start(); err != nil {
+		log.Println(err)
+	}
+
+	// Dump error to console
+	slurp, _ := ioutil.ReadAll(stderr)
+	fmt.Printf("%s\n", slurp)
+
+	// Wait for command to finish
+	if err := cmd.Wait(); err != nil {
+		return "", err
+	}
+
+	return outpath, err
 }

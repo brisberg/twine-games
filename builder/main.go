@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"os"
 )
 
 var gamesFile = "games/games.yml"
@@ -10,8 +9,7 @@ var gamesFile = "games/games.yml"
 func main() {
 	targets, err := ReadTargetsListFromFile(gamesFile)
 	if err != nil {
-		log.Fatalf("error: %v", err)
-		os.Exit(1)
+		log.Fatalf("Failed reading targets list: %v", err)
 	}
 
 	for _, g := range *&targets.Games {
@@ -21,6 +19,8 @@ func main() {
 			continue
 		}
 
-		BuildTwineStory(game)
+		if err = BuildTwineStory(game); err != nil {
+			log.Println(err)
+		}
 	}
 }
