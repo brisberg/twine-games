@@ -13,7 +13,11 @@ func main() {
 		log.Fatalf("Failed reading targets list: %v", err)
 	}
 
+	// Create dist directory for tweego outputs
+	os.MkdirAll("dist", os.ModePerm)
+
 	// Create the index markdown file
+	os.MkdirAll("genfiles/public", os.ModePerm)
 	mdfile, err := os.Create("genfiles/public/README.md")
 	if err != nil {
 		log.Fatalf("Failed to open README output file: %v", err)

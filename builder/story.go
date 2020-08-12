@@ -10,8 +10,14 @@ import (
 
 // Story is the full build definition for a Twine game.
 type Story struct {
-	// Name/StoryKey (used for file paths, analytics key, etc)
-	Name string
+	// ID (used for file paths, analytic keys, etc)
+	ID string
+
+	// Human readable Title of the story
+	Title string
+
+	// Description, displayed in index list
+	Description string
 
 	// List of directories containing twee files to compile
 	Deps []string
@@ -50,7 +56,7 @@ func BuildTwineStory(story *Story) error {
 		return fmt.Errorf("Failed to compile header file: %v", err)
 	}
 
-	output := "dist/" + story.Name + ".html"
+	output := "dist/" + story.ID + ".html"
 	args := []string{
 		"--log-files", "-l",
 		"--head=" + headfile,
@@ -62,17 +68,17 @@ func BuildTwineStory(story *Story) error {
 	// fmt.Printf("cmd: %v\n", cmd)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
-		return fmt.Errorf("Failed to build '%s': %s", story.Name, err)
+		return fmt.Errorf("Failed to build '%s': %s", story.ID, err)
 	}
 
 	fmt.Printf("%s\n", out)
-	fmt.Printf("Built '%s' as %s\n", story.Name, output)
+	fmt.Printf("Built '%s' as %s\n", story.ID, output)
 
 	return err
 }
 
 func compileHeadHTML(story *Story) (string, error) {
-	outpath := "genfiles/" + story.Name + ".head.html"
+	outpath := "genfiles/" + story.ID + ".head.html"
 
 	// open the out file for writing
 	outfile, err := os.Create(outpath)
