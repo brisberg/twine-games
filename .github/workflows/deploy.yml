@@ -27,7 +27,10 @@ jobs:
           go run builder/*
 
       - name: Prepare Deploy Package
-        run: cp genfiles/public/* dist
+        run: |
+          mkdir dist
+          cp genfiles/public/* dist
+          cp gefiles/games/* dist
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.5.9
