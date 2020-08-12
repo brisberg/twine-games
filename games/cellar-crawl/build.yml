@@ -1,0 +1,4 @@
+name: "cellar-crawl"
+deps:
+  - "games/cellar-crawl"
+  - "shared"
