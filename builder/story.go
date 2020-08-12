@@ -5,9 +5,6 @@ import (
 	"os/exec"
 )
 
-// Note: struct fields must be public in order for unmarshal to
-// correctly populate the data.
-
 // Story is the full build definition for a Twine game.
 type Story struct {
 	Name string
@@ -28,6 +25,16 @@ func ReadStoryFromFile(filePath string) (*Story, error) {
 }
 
 // BuildTwineStory builds the given Story definition using Tweego
+//
+// This library calls out to github.com/tmedwards/tweego through os/exec.
+// It assumes that the tweego binary has already been fetched (through `go get`) and added to the path.
+//
+// Example Tweego call:
+// tweego --log-files -l \
+// 				--head=analytics.html \
+// 				-o dist/$game.html
+// 				shared/ \
+// 				games/$game
 func BuildTwineStory(story *Story) error {
 	output := "dist/" + story.Name + ".html"
 	args := []string{
