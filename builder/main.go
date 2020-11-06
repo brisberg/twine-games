@@ -13,9 +13,6 @@ func main() {
 		log.Fatalf("Failed reading targets list: %v", err)
 	}
 
-	// Create dist directory for tweego outputs
-	os.MkdirAll("dist", os.ModePerm)
-
 	// Create all output directories
 	// Public directory for markdown files
 	os.MkdirAll("genfiles/public", os.ModePerm)

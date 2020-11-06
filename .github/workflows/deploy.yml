@@ -30,7 +30,7 @@ jobs:
         run: |
           mkdir dist
           cp genfiles/public/* dist
-          cp gefiles/games/* dist
+          cp genfiles/games/* dist
           cp CNAME dist
 
       - name: Deploy
