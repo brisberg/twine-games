@@ -31,6 +31,7 @@ jobs:
           mkdir dist
           cp genfiles/public/* dist
           cp gefiles/games/* dist
+          cp CNAME dist
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.5.9
