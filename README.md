@@ -1,7 +1,10 @@
-# Twine Games
+# Twine Games (Deprecated)
+
 Set of simple browser games built in Twine
 
 Play them [online](https://brisberg.github.io/twine-games/)!
+
+Deprecated 11/2020 in favor of modular repository structure - [twine.brisberg.dev](https://github.com/brisberg/twine.brisberg.dev).
 
 ## Install
 
